@@ -33,7 +33,7 @@ public abstract class IntegrationTest
     @Rule
     public final ConditionalIgnoreRule mConditionalIgnore = new ConditionalIgnoreRule();
 
-    public static final int E2E_TEST_TIMEOUT_MS = 15 * 60 * 1000;
+    public static final int E2E_TEST_TIMEOUT_MS = 5 * 60 * 1000;
 
     //This timeout applies to all individual tests in classes that inherit from this class
     @Rule
