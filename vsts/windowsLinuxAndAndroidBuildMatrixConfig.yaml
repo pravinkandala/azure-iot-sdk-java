@@ -51,7 +51,7 @@ jobs:
     pool:
       vmImage: 'macOS-latest'
     strategy:
-      maxParallel: 3
+      maxParallel: 15
       matrix:
         TestGroup1:
           ANDROID_TEST_GROUP_ID: TestGroup1
@@ -124,6 +124,12 @@ jobs:
           artifactName: 'androidBuildFiles'
           targetPath: $(Build.SourcesDirectory)/iot-e2e-tests/android/app/build/outputs/apk
 
+#Need some way for this job to startup even before android build, but to wait at this point and download artifacts once they are available. Maybe
+# make it all just one job, and start the android emulator startup asynchronous and assumed to be ready once the build completes?
+# https://stackoverflow.com/questions/356100/how-to-wait-in-bash-for-several-subprocesses-to-finish-and-return-exit-code-0
+# https://www.maketecheasier.com/run-bash-commands-background-linux
+# Reruns would have to build again, which is unfortunate, but since the emulator startup time is about the same as the build time anyways, its not a big deal
+# Could capture the output for each (right?) and print them sequentially so that it doesn't mix logs from avd and mvn
       - task: Bash@3
         displayName: 'Start Android Emulator'
         inputs:
