@@ -5,17 +5,14 @@
 
 package com.microsoft.azure.sdk.iot.android.iothub.errorinjection.twin;
 
-import com.microsoft.appcenter.espresso.Factory;
-import com.microsoft.appcenter.espresso.ReportHelper;
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
-import com.microsoft.azure.sdk.iot.android.helper.TestGroup11;
+import com.microsoft.azure.sdk.iot.android.helper.TestGroup8;
 import com.microsoft.azure.sdk.iot.common.helpers.ClientType;
 import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
 import com.microsoft.azure.sdk.iot.common.tests.iothub.errorinjection.ReportedPropertiesErrInjTests;
 import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
 import com.microsoft.azure.sdk.iot.service.auth.AuthenticationType;
 
-import org.junit.After;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -24,17 +21,14 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collection;
 
-@TestGroup11
+@TestGroup8
 @RunWith(Parameterized.class)
-public class ReportedPropertiesErrInjDeviceAndroidRunner extends ReportedPropertiesErrInjTests
+public class ReportedPropertiesErrInjAndroidRunner extends ReportedPropertiesErrInjTests
 {
     @Rule
     public Rerun count = new Rerun(3);
 
-    @Rule
-    public ReportHelper reportHelper = Factory.getReportHelper();
-
-    public ReportedPropertiesErrInjDeviceAndroidRunner(IotHubClientProtocol protocol, AuthenticationType authenticationType, ClientType clientType, String publicKeyCert, String privateKey, String x509Thumbprint)
+    public ReportedPropertiesErrInjAndroidRunner(IotHubClientProtocol protocol, AuthenticationType authenticationType, ClientType clientType, String publicKeyCert, String privateKey, String x509Thumbprint)
     {
         super(protocol, authenticationType, clientType, publicKeyCert, privateKey, x509Thumbprint);
     }
@@ -45,12 +39,6 @@ public class ReportedPropertiesErrInjDeviceAndroidRunner extends ReportedPropert
     {
         iotHubConnectionString = BuildConfig.IotHubConnectionString;
         isBasicTierHub = Boolean.parseBoolean(BuildConfig.IsBasicTierHub);
-        return inputsCommon(ClientType.DEVICE_CLIENT);
-    }
-
-    @After
-    public void labelSnapshot()
-    {
-        reportHelper.label("Stopping App");
+        return inputsCommon();
     }
 }
