@@ -327,7 +327,7 @@ public class ProvisioningCommon extends ProvisioningIntegrationTest
                     }
 
                     System.out.println("Encountered an exception while registering device, trying again: " + Tools.getStackTraceFromThrowable(e));
-                    Thread.sleep(10*1000);
+                    Thread.sleep(5*1000);
                 }
                 else
                 {

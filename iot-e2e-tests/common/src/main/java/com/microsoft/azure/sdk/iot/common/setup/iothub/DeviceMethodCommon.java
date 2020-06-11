@@ -216,8 +216,6 @@ public class DeviceMethodCommon extends IotHubIntegrationTest
                     throw new Exception("Test code has not been written for this path yet");
                 }
             }
-
-            Thread.sleep(2000);
         }
 
         public void dispose()

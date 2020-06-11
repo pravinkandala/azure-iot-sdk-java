@@ -235,8 +235,6 @@ public class DeviceTwinCommon extends IotHubIntegrationTest
             devicesUnderTest[i].sCModuleForRegistryManager = Tools.addModuleWithRetry(registryManager, devicesUnderTest[i].sCModuleForRegistryManager);
             setUpTwin(devicesUnderTest[i]);
         }
-
-        Thread.sleep(2000);
     }
 
     protected void removeMultipleDevices(int numberOfDevices) throws IOException, IotHubException, InterruptedException
@@ -465,15 +463,12 @@ public class DeviceTwinCommon extends IotHubIntegrationTest
             deviceUnderTest.sCDeviceForRegistryManager.setThumbprintFinal(testInstance.x509Thumbprint, testInstance.x509Thumbprint);
         }
 
-
         deviceUnderTest.sCDeviceForRegistryManager = Tools.addDeviceWithRetry(registryManager, deviceUnderTest.sCDeviceForRegistryManager);
 
         if (deviceUnderTest.sCModuleForRegistryManager != null)
         {
             Tools.addModuleWithRetry(registryManager, deviceUnderTest.sCModuleForRegistryManager);
         }
-
-        Thread.sleep(2000);
 
         setUpTwin(deviceUnderTest);
     }

@@ -167,8 +167,6 @@ public class HubTierConnectionTests extends IotHubIntegrationTest
                 }
         ));
 
-        Thread.sleep(2000);
-
         return inputs;
     }
 

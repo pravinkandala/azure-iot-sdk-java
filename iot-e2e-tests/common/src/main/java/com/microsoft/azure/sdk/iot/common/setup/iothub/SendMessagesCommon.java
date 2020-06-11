@@ -199,8 +199,6 @@ public class SendMessagesCommon extends IotHubIntegrationTest
             }
         }
 
-        Thread.sleep(2000);
-
         return inputs;
     }
 
@@ -298,8 +296,6 @@ public class SendMessagesCommon extends IotHubIntegrationTest
                 this.client.setProxySettings(proxySettings);
             }
 
-            Thread.sleep(2000);
-
             buildMessageLists();
         }
 
@@ -373,8 +369,6 @@ public class SendMessagesCommon extends IotHubIntegrationTest
                 ProxySettings proxySettings = new ProxySettings(testProxy, testProxyUser, testProxyPass);
                 this.client.setProxySettings(proxySettings);
             }
-
-            Thread.sleep(2000);
 
             buildMessageLists();
         }
