@@ -65,6 +65,7 @@ public class DummyAndroidRunner
     @TestGroup36
     @TestGroup37
     @TestGroup38
+    @TestGroup39
     @Test
     @ConditionalIgnoreRule.ConditionalIgnore(condition = BasicTierOnlyRule.class)
     public void dummyTest()
