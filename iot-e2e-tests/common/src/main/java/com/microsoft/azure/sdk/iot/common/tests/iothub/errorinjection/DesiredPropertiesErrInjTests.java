@@ -50,20 +50,6 @@ public class DesiredPropertiesErrInjTests extends DeviceTwinCommon
             PROPERTY_VALUE_UPDATE
         );
     }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredArrayPropertiesRecoveredFromTcpConnectionDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromTcpConnectionDropFlow(
-            jsonParser.parse(PROPERTY_VALUE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE2_ARRAY),
-            PROPERTY_VALUE_UPDATE_ARRAY_PREFIX,
-            PROPERTY_VALUE_UPDATE2_ARRAY_PREFIX
-        );
-    }
-
     public void subscribeToDesiredPropertiesRecoveredFromTcpConnectionDropFlow(
         Object propertyValue,
         Object updatePropertyValue,
@@ -81,30 +67,6 @@ public class DesiredPropertiesErrInjTests extends DeviceTwinCommon
             updatePropertyValue2,
             update1Prefix,
             update2Prefix);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredPropertiesRecoveredFromAmqpsConnectionDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsConnectionDropFlow(
-            PROPERTY_VALUE,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE2,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredArrayPropertiesRecoveredFromAmqpsConnectionDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsConnectionDropFlow(
-            jsonParser.parse(PROPERTY_VALUE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE2_ARRAY),
-            PROPERTY_VALUE_UPDATE_ARRAY_PREFIX,
-            PROPERTY_VALUE_UPDATE2_ARRAY_PREFIX);
     }
 
     public void subscribeToDesiredPropertiesRecoveredFromAmqpsConnectionDropFlow(
@@ -132,30 +94,6 @@ public class DesiredPropertiesErrInjTests extends DeviceTwinCommon
             update2Prefix);
     }
 
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredPropertiesRecoveredFromAmqpsSessionDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsSessionDropFlow(
-            PROPERTY_VALUE,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE2,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredArrayPropertiesRecoveredFromAmqpsSessionDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsSessionDropFlow(
-            jsonParser.parse(PROPERTY_VALUE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE2_ARRAY),
-            PROPERTY_VALUE_UPDATE_ARRAY_PREFIX,
-            PROPERTY_VALUE_UPDATE2_ARRAY_PREFIX);
-    }
-
     public void subscribeToDesiredPropertiesRecoveredFromAmqpsSessionDropFlow(
             Object propertyValue,
             Object updatePropertyValue,
@@ -181,29 +119,6 @@ public class DesiredPropertiesErrInjTests extends DeviceTwinCommon
             update2Prefix);
     }
 
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredPropertiesRecoveredFromAmqpsCBSReqLinkrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsCBSReqLinkropFlow(
-            PROPERTY_VALUE,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE2,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredPropertiesRecoveredFromAmqpsCBSReqLinkropFlow() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsCBSReqLinkropFlow(
-            jsonParser.parse(PROPERTY_VALUE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE2_ARRAY),
-            PROPERTY_VALUE_UPDATE_ARRAY_PREFIX,
-            PROPERTY_VALUE_UPDATE2_ARRAY_PREFIX);
-    }
 
     public void subscribeToDesiredPropertiesRecoveredFromAmqpsCBSReqLinkropFlow(
         Object propertyValue,
@@ -234,30 +149,6 @@ public class DesiredPropertiesErrInjTests extends DeviceTwinCommon
             updatePropertyValue2,
             update1Prefix,
             update2Prefix);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredPropertiesRecoveredFromAmqpsCBSRespLinkDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsCBSRespLinkDropFlow(
-            PROPERTY_VALUE,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE2,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredArrayPropertiesRecoveredFromAmqpsCBSRespLinkDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsCBSRespLinkDropFlow(
-            jsonParser.parse(PROPERTY_VALUE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE2_ARRAY),
-            PROPERTY_VALUE_UPDATE_ARRAY_PREFIX,
-            PROPERTY_VALUE_UPDATE2_ARRAY_PREFIX);
     }
 
     public void subscribeToDesiredPropertiesRecoveredFromAmqpsCBSRespLinkDropFlow(
@@ -291,29 +182,6 @@ public class DesiredPropertiesErrInjTests extends DeviceTwinCommon
             update2Prefix);
     }
 
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredPropertiesRecoveredFromAmqpsD2CDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsD2CDropFlow(
-            PROPERTY_VALUE,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE2,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredArrayPropertiesRecoveredFromAmqpsD2CDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsD2CDropFlow(
-            jsonParser.parse(PROPERTY_VALUE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE2_ARRAY),
-            PROPERTY_VALUE_UPDATE_ARRAY_PREFIX,
-            PROPERTY_VALUE_UPDATE2_ARRAY_PREFIX);
-    }
 
     public void subscribeToDesiredPropertiesRecoveredFromAmqpsD2CDropFlow(
         Object propertyValue,
@@ -341,29 +209,6 @@ public class DesiredPropertiesErrInjTests extends DeviceTwinCommon
             update2Prefix);
     }
 
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredPropertiesRecoveredFromC2DDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromC2DDropFlow(
-            PROPERTY_VALUE,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE2,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredArrayPropertiesRecoveredFromC2DDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromC2DDropFlow(
-            jsonParser.parse(PROPERTY_VALUE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE2_ARRAY),
-            PROPERTY_VALUE_UPDATE_ARRAY_PREFIX,
-            PROPERTY_VALUE_UPDATE2_ARRAY_PREFIX);
-    }
 
     public void subscribeToDesiredPropertiesRecoveredFromC2DDropFlow(
         Object propertyValue,
@@ -397,29 +242,6 @@ public class DesiredPropertiesErrInjTests extends DeviceTwinCommon
             update2Prefix);
     }
 
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredPropertiesRecoveredFromAmqpsTwinReqLinkDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsTwinReqLinkDropFlow(
-            PROPERTY_VALUE,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE2,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredArrayPropertiesRecoveredFromAmqpsTwinReqLinkDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsTwinReqLinkDropFlow(
-            jsonParser.parse(PROPERTY_VALUE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE2_ARRAY),
-            PROPERTY_VALUE_UPDATE_ARRAY_PREFIX,
-            PROPERTY_VALUE_UPDATE2_ARRAY_PREFIX);
-    }
 
     public void subscribeToDesiredPropertiesRecoveredFromAmqpsTwinReqLinkDropFlow(
             Object propertyValue,
@@ -451,30 +273,6 @@ public class DesiredPropertiesErrInjTests extends DeviceTwinCommon
             updatePropertyValue2,
             update1Prefix,
             update2Prefix);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredPropertiesRecoveredFromAmqpsTwinRespLinkDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsTwinRespLinkDropFlow(
-            PROPERTY_VALUE,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE2,
-            PROPERTY_VALUE_UPDATE,
-            PROPERTY_VALUE_UPDATE);
-    }
-
-    @Test
-    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void subscribeToDesiredArrayPropertiesRecoveredFromAmqpsTwinRespLinkDrop() throws Exception
-    {
-        subscribeToDesiredPropertiesRecoveredFromAmqpsTwinRespLinkDropFlow(
-            jsonParser.parse(PROPERTY_VALUE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE_ARRAY),
-            jsonParser.parse(PROPERTY_VALUE_UPDATE2_ARRAY),
-            PROPERTY_VALUE_UPDATE_ARRAY_PREFIX,
-            PROPERTY_VALUE_UPDATE2_ARRAY_PREFIX);
     }
 
     public void subscribeToDesiredPropertiesRecoveredFromAmqpsTwinRespLinkDropFlow(

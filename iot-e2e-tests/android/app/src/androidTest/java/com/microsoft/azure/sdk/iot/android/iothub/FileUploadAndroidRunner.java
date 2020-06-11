@@ -47,13 +47,6 @@ public class FileUploadAndroidRunner extends FileUploadTests
         return FileUploadTests.inputs();
     }
 
-    @Ignore
-    @Override
-    @Test
-    public void uploadToBlobAsyncSingleFileZeroLength()
-    {
-    }
-
     @After
     public void labelSnapshot()
     {
