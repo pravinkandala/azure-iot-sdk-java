@@ -43,6 +43,192 @@ public class GetTwinErrInjTests extends DeviceTwinCommon
                 ErrorInjectionHelper.DefaultDurationInSec));
     }
 
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromAmqpsConnectionDrop() throws Exception
+    {
+        if (!(testInstance.protocol == AMQPS || testInstance.protocol == AMQPS_WS))
+        {
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.amqpsConnectionDropErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromAmqpsSessionDrop() throws Exception
+    {
+        if (!(testInstance.protocol == AMQPS || testInstance.protocol == AMQPS_WS))
+        {
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.amqpsSessionDropErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromAmqpsCBSReqLinkDrop() throws Exception
+    {
+        if (!(testInstance.protocol == AMQPS || testInstance.protocol == AMQPS_WS))
+        {
+            return;
+        }
+
+        if (testInstance.authenticationType != SAS)
+        {
+            //CBS links are only established when using sas authentication
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.amqpsCBSReqLinkDropErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromAmqpsCBSRespLinkDrop() throws Exception
+    {
+        if (!(testInstance.protocol == AMQPS || testInstance.protocol == AMQPS_WS))
+        {
+            return;
+        }
+
+        if (testInstance.authenticationType != SAS)
+        {
+            //CBS links are only established when using sas authentication
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.amqpsCBSRespLinkDropErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromAmqpsD2CLinkDrop() throws Exception
+    {
+        if (!(testInstance.protocol == AMQPS || testInstance.protocol == AMQPS_WS))
+        {
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.amqpsD2CTelemetryLinkDropErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromAmqpsC2DLinkDrop() throws Exception
+    {
+        if (!(testInstance.protocol == AMQPS || testInstance.protocol == AMQPS_WS))
+        {
+            return;
+        }
+
+        if (testInstance.protocol == AMQPS && testInstance.authenticationType == SELF_SIGNED)
+        {
+            //TODO error injection seems to fail under these circumstances. C2D link is never dropped even if waiting a long time
+            // Need to talk to service folks about this strange behavior
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.amqpsC2DLinkDropErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromAmqpsTwinReqLinkDrop() throws Exception
+    {
+        if (!(testInstance.protocol == AMQPS || testInstance.protocol == AMQPS_WS))
+        {
+            return;
+        }
+
+        if (testInstance.protocol == AMQPS && testInstance.authenticationType == SELF_SIGNED)
+        {
+            //TODO error injection seems to fail under these circumstances. Twin Req link is never dropped even if waiting a long time
+            // Need to talk to service folks about this strange behavior
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.amqpsTwinReqLinkDropErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromAmqpsTwinRespLinkDrop() throws Exception
+    {
+        if (!(testInstance.protocol == AMQPS || testInstance.protocol == AMQPS_WS))
+        {
+            return;
+        }
+
+        if (testInstance.protocol == AMQPS && testInstance.authenticationType == SELF_SIGNED)
+        {
+            //TODO error injection seems to fail under these circumstances. Twin Resp link is never dropped even if waiting a long time
+            // Need to talk to service folks about this strange behavior
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.amqpsTwinRespLinkDropErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromGracefulShutdownAmqp() throws Exception
+    {
+        if (!(testInstance.protocol == AMQPS || testInstance.protocol == AMQPS_WS))
+        {
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.amqpsGracefulShutdownErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void getDeviceTwinRecoveredFromGracefulShutdownMqtt() throws Exception
+    {
+        if (!(testInstance.protocol == MQTT || testInstance.protocol == MQTT_WS))
+        {
+            return;
+        }
+
+        super.setUpNewDeviceAndModule();
+        this.errorInjectionGetDeviceTwinFlow(ErrorInjectionHelper.mqttGracefulShutdownErrorInjectionMessage(
+                ErrorInjectionHelper.DefaultDelayInSec,
+                ErrorInjectionHelper.DefaultDurationInSec));
+    }
+
     public void errorInjectionGetDeviceTwinFlow(Message errorInjectionMessage) throws Exception
     {
         // Arrange

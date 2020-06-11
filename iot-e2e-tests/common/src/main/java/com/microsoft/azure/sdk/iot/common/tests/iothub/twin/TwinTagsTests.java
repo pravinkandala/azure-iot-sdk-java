@@ -108,4 +108,103 @@ public class TwinTagsTests extends DeviceTwinCommon
         }
         removeMultipleDevices(MAX_DEVICES);
     }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void testAddTagUpdates() throws IOException, InterruptedException, IotHubException, GeneralSecurityException, URISyntaxException, ModuleClientException
+    {
+        addMultipleDevices(MAX_DEVICES);
+
+        // Update tag for multiple devices
+        for (int i = 0; i < MAX_DEVICES; i++)
+        {
+            Set<Pair> tags = new HashSet<>();
+            tags.add(new Pair(TAG_KEY + i, TAG_VALUE + i));
+            devicesUnderTest[i].sCDeviceForTwin.setTags(tags);
+            sCDeviceTwin.updateTwin(devicesUnderTest[i].sCDeviceForTwin);
+            Thread.sleep(DELAY_BETWEEN_OPERATIONS);
+            devicesUnderTest[i].sCDeviceForTwin.clearTwin();
+        }
+
+        // Read updates on multiple devices
+        for (int i = 0; i < MAX_DEVICES; i++)
+        {
+            sCDeviceTwin.getTwin(devicesUnderTest[i].sCDeviceForTwin);
+            Thread.sleep(DELAY_BETWEEN_OPERATIONS);
+
+            for (Pair t : devicesUnderTest[i].sCDeviceForTwin.getTags())
+            {
+                assertEquals(buildExceptionMessage("unexpected tag key, expected " + TAG_KEY + i + " but was " + t.getKey(), internalClient), TAG_KEY + i, t.getKey());
+                assertEquals(buildExceptionMessage("Unexpected tag value, expected " + TAG_VALUE + i + " but was " + t.getValue(), internalClient), TAG_VALUE + i, t.getValue());
+            }
+        }
+        removeMultipleDevices(MAX_DEVICES);
+    }
+
+    @Test
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void testUpdateTagUpdates() throws IOException, InterruptedException, IotHubException, GeneralSecurityException, URISyntaxException, ModuleClientException
+    {
+        addMultipleDevices(MAX_DEVICES);
+
+        // Add tag for multiple devices
+        for (int i = 0; i < MAX_DEVICES; i++)
+        {
+            Set<Pair> tags = new HashSet<>();
+            tags.add(new Pair(TAG_KEY + i, TAG_VALUE + i));
+            devicesUnderTest[i].sCDeviceForTwin.setTags(tags);
+            sCDeviceTwin.updateTwin(devicesUnderTest[i].sCDeviceForTwin);
+            devicesUnderTest[i].sCDeviceForTwin.clearTwin();
+        }
+
+        // Update Tags on multiple devices
+        for (int i = 0; i < MAX_DEVICES; i++)
+        {
+            sCDeviceTwin.getTwin(devicesUnderTest[i].sCDeviceForTwin);
+            Set<Pair> tags = devicesUnderTest[i].sCDeviceForTwin.getTags();
+            for (Pair tag : tags)
+            {
+                tag.setValue(TAG_VALUE_UPDATE + i);
+            }
+            devicesUnderTest[i].sCDeviceForTwin.setTags(tags);
+            sCDeviceTwin.updateTwin(devicesUnderTest[i].sCDeviceForTwin);
+            devicesUnderTest[i].sCDeviceForTwin.clearTwin();
+        }
+
+        // Read updates on multiple devices
+        for (int i = 0; i < MAX_DEVICES; i++)
+        {
+            sCDeviceTwin.getTwin(devicesUnderTest[i].sCDeviceForTwin);
+
+            for (Pair t : devicesUnderTest[i].sCDeviceForTwin.getTags())
+            {
+                assertEquals(buildExceptionMessage("unexpected tag key, expected " + TAG_KEY + i + " but was " + t.getKey(), internalClient), TAG_KEY + i, t.getKey());
+                assertEquals(buildExceptionMessage("Unexpected tag value, expected " + TAG_VALUE + i + " but was " + t.getValue(), internalClient), TAG_VALUE_UPDATE + i, t.getValue());
+            }
+        }
+
+        // Delete tags
+        for (int i = 0; i < MAX_DEVICES; i++)
+        {
+            sCDeviceTwin.getTwin(devicesUnderTest[i].sCDeviceForTwin);
+            Set<Pair> tags = devicesUnderTest[i].sCDeviceForTwin.getTags();
+            for (Pair tag : tags)
+            {
+                tag.setValue(null);
+            }
+            devicesUnderTest[i].sCDeviceForTwin.setTags(tags);
+            sCDeviceTwin.updateTwin(devicesUnderTest[i].sCDeviceForTwin);
+            devicesUnderTest[i].sCDeviceForTwin.clearTwin();
+        }
+
+        // Verify tags were deleted successfully
+        for (int i = 0; i < MAX_DEVICES; i++)
+        {
+            sCDeviceTwin.getTwin(devicesUnderTest[i].sCDeviceForTwin);
+
+            assertEquals(buildExceptionMessage("Tags were not deleted by being set null", internalClient), 0, devicesUnderTest[i].sCDeviceForTwin.getTags().size());
+        }
+
+        removeMultipleDevices(MAX_DEVICES);
+    }
 }

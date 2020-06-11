@@ -107,6 +107,19 @@ public class ServiceClientTests extends IotHubIntegrationTest
         cloudToDeviceTelemetry(false);
     }
 
+    @Test (timeout=MAX_TEST_MILLISECONDS)
+    @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
+    public void cloudToDeviceTelemetryWithProxy() throws Exception
+    {
+        if (testInstance.protocol != IotHubServiceClientProtocol.AMQPS_WS)
+        {
+            //Proxy support only exists for AMQPS_WS currently
+            return;
+        }
+
+        cloudToDeviceTelemetry(true);
+    }
+
     public void cloudToDeviceTelemetry(boolean withProxy) throws Exception
     {
         // Arrange
@@ -152,5 +165,81 @@ public class ServiceClientTests extends IotHubIntegrationTest
         assertEquals(buildExceptionMessage("", hostName), 1, deviceGetAfter.getCloudToDeviceMessageCount());
 
         registryManager.close();
+    }
+
+    @Test (timeout=MAX_TEST_MILLISECONDS)
+    public void serviceClientValidatesRemoteCertificateWhenSendingTelemetry() throws IOException
+    {
+        boolean expectedExceptionWasCaught = false;
+
+        ServiceClient serviceClient = ServiceClient.createFromConnectionString(invalidCertificateServerConnectionString, testInstance.protocol);
+
+        try
+        {
+            serviceClient.open();
+            serviceClient.send(testInstance.deviceId, new Message("some message"));
+        }
+        catch (IOException e)
+        {
+            expectedExceptionWasCaught = true;
+        }
+        catch (Exception e)
+        {
+            fail(buildExceptionMessage("Expected IOException, but received: " + Tools.getStackTraceFromThrowable(e), hostName));
+        }
+
+        assertTrue(buildExceptionMessage("Expected an exception due to service presenting invalid certificate", hostName), expectedExceptionWasCaught);
+    }
+
+    @Test (timeout=MAX_TEST_MILLISECONDS)
+    public void serviceClientValidatesRemoteCertificateWhenGettingFeedbackReceiver() throws IOException
+    {
+        boolean expectedExceptionWasCaught = false;
+
+        ServiceClient serviceClient = ServiceClient.createFromConnectionString(invalidCertificateServerConnectionString, testInstance.protocol);
+
+        try
+        {
+            serviceClient.open();
+            FeedbackReceiver receiver = serviceClient.getFeedbackReceiver();
+            receiver.open();
+            receiver.receive(1000);
+        }
+        catch (IOException e)
+        {
+            expectedExceptionWasCaught = true;
+        }
+        catch (Exception e)
+        {
+            fail(buildExceptionMessage("Expected IOException, but received: " + Tools.getStackTraceFromThrowable(e), hostName));
+        }
+
+        assertTrue(buildExceptionMessage("Expected an exception due to service presenting invalid certificate", hostName), expectedExceptionWasCaught);
+    }
+
+    @Test (timeout=MAX_TEST_MILLISECONDS)
+    public void serviceClientValidatesRemoteCertificateWhenGettingFileUploadFeedbackReceiver() throws IOException
+    {
+        boolean expectedExceptionWasCaught = false;
+
+        ServiceClient serviceClient = ServiceClient.createFromConnectionString(invalidCertificateServerConnectionString, testInstance.protocol);
+
+        try
+        {
+            serviceClient.open();
+            FileUploadNotificationReceiver receiver = serviceClient.getFileUploadNotificationReceiver();
+            receiver.open();
+            receiver.receive(1000);
+        }
+        catch (IOException e)
+        {
+            expectedExceptionWasCaught = true;
+        }
+        catch (Exception e)
+        {
+            fail(buildExceptionMessage("Expected IOException, but received: " + Tools.getStackTraceFromThrowable(e), hostName));
+        }
+
+        assertTrue(buildExceptionMessage("Expected an exception due to service presenting invalid certificate", hostName), expectedExceptionWasCaught);
     }
 }
