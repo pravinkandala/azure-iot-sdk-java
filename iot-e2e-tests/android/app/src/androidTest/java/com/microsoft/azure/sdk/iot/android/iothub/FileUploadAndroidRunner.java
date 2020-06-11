@@ -19,6 +19,7 @@ import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 
 @TestGroup30
+@RunWith(Parameterized.class)
 public class FileUploadAndroidRunner extends FileUploadTests
 {
     @Rule
