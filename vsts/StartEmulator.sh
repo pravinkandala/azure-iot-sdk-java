@@ -7,11 +7,11 @@ emulatorImage='system-images;android-28;google_apis;x86_64'
 avdName='Pixel_9.0'
 
 echo ''
-echo 'Installing emulator image ${emulatorImage}'
+echo "Installing emulator image ${emulatorImage}"
 echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install $emulatorImage
 
 echo ''
-echo 'Creating android emulator with name ${avdName}'
+echo "Creating android emulator with name ${avdName}"
 echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n $avdName -k $emulatorImage --force
 
 echo ''
