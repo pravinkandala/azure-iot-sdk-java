@@ -16,7 +16,9 @@ import com.microsoft.azure.sdk.iot.service.auth.AuthenticationType;
 import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 import org.littleshoot.proxy.HttpProxyServer;
 import org.littleshoot.proxy.impl.DefaultHttpProxyServer;
 
@@ -72,7 +74,9 @@ public class TokenRenewalTests extends IotHubIntegrationTest
      * Http           : No connection status callback, but should be able to send a message after the first generated sas token has expired
      * @throws Exception if the test fails in any way
      */
-    @Test
+    public static final int E2E_TEST_TIMEOUT_MS = 16 * 60 * 1000;
+
+    @Test (timeout = E2E_TEST_TIMEOUT_MS)
     public void tokenRenewalWorks() throws Exception
     {
         final long SECONDS_FOR_SAS_TOKEN_TO_LIVE_BEFORE_RENEWAL = 30;
