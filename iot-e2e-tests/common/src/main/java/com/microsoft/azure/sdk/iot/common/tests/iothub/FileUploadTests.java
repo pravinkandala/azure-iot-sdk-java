@@ -188,7 +188,9 @@ public class FileUploadTests extends IotHubIntegrationTest
     @Test (timeout = MAX_MILLISECS_TIMEOUT_KILL_TEST)
     public void uploadToBlobAsyncSingleFile() throws URISyntaxException, IOException, InterruptedException, IotHubException, GeneralSecurityException
     {
+        serviceClient.open();
         FileUploadNotificationReceiver receiver = serviceClient.getFileUploadNotificationReceiver();
+        receiver.open();
         receiver.receive(10000);
     }
 }
