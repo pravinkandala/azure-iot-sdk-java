@@ -6,7 +6,7 @@
 package com.microsoft.azure.sdk.iot.android.iothub.messaging;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
-import com.microsoft.azure.sdk.iot.android.helper.TestGroup10;
+import com.microsoft.azure.sdk.iot.android.helper.TestGroup9;
 import com.microsoft.azure.sdk.iot.common.helpers.ClientType;
 import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
 import com.microsoft.azure.sdk.iot.common.tests.iothub.telemetry.SendMessagesTests;
@@ -24,7 +24,7 @@ import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
 import java.util.Collection;
 
-@TestGroup10
+@TestGroup9
 @RunWith(Parameterized.class)
 public class SendMessagesAndroidRunner extends SendMessagesTests
 {

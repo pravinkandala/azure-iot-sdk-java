@@ -6,7 +6,7 @@
 package com.microsoft.azure.sdk.iot.android.iothub.twin;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
-import com.microsoft.azure.sdk.iot.android.helper.TestGroup18;
+import com.microsoft.azure.sdk.iot.android.helper.TestGroup21;
 import com.microsoft.azure.sdk.iot.common.helpers.ClientType;
 import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
 import com.microsoft.azure.sdk.iot.common.tests.iothub.twin.GetTwinTests;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collection;
 
-@TestGroup18
+@TestGroup21
 @RunWith(Parameterized.class)
 public class GetTwinAndroidRunner extends GetTwinTests
 {

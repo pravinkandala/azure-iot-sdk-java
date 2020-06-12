@@ -51,7 +51,7 @@ jobs:
     pool:
       vmImage: 'macOS-latest'
     strategy:
-      maxParallel: 15
+      maxParallel: 21
       matrix:
         TestGroup1:
           ANDROID_TEST_GROUP_ID: TestGroup1
@@ -71,8 +71,8 @@ jobs:
           ANDROID_TEST_GROUP_ID: TestGroup8
         TestGroup9:
           ANDROID_TEST_GROUP_ID: TestGroup9
-        TestGroup10:
-          ANDROID_TEST_GROUP_ID: TestGroup10
+        #TestGroup10:
+        #  ANDROID_TEST_GROUP_ID: TestGroup10
         TestGroup11:
           ANDROID_TEST_GROUP_ID: TestGroup11
         TestGroup12:
@@ -87,8 +87,8 @@ jobs:
           ANDROID_TEST_GROUP_ID: TestGroup16
         TestGroup17:
           ANDROID_TEST_GROUP_ID: TestGroup17
-        TestGroup18:
-          ANDROID_TEST_GROUP_ID: TestGroup18
+        #TestGroup18:
+        #  ANDROID_TEST_GROUP_ID: TestGroup18
         TestGroup19:
           ANDROID_TEST_GROUP_ID: TestGroup19
         TestGroup20:
@@ -97,12 +97,12 @@ jobs:
           ANDROID_TEST_GROUP_ID: TestGroup21
         TestGroup22:
           ANDROID_TEST_GROUP_ID: TestGroup22
-        TestGroup23:
-          ANDROID_TEST_GROUP_ID: TestGroup23
+        #TestGroup23:
+          #ANDROID_TEST_GROUP_ID: TestGroup23
         TestGroup24:
           ANDROID_TEST_GROUP_ID: TestGroup24
-        TestGroup25:
-          ANDROID_TEST_GROUP_ID: TestGroup25
+        #TestGroup25:
+        #  ANDROID_TEST_GROUP_ID: TestGroup25
 
     displayName: Android Test
     dependsOn: AndroidBuild
