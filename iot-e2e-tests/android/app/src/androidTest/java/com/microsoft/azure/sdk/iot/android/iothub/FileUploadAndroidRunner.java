@@ -24,7 +24,6 @@ import java.util.Collection;
 
 //TODO these tests haven't been running recently, but by accident. Unfortunately, they fail when run, but only on android. Something about the
 // file upload receiver thread isn't working right. Disabling until it gets figured out
-@Ignore
 @TestGroup22
 @RunWith(Parameterized.class)
 public class FileUploadAndroidRunner extends FileUploadTests
