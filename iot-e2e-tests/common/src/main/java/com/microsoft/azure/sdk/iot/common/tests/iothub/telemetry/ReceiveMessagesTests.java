@@ -86,16 +86,15 @@ public class ReceiveMessagesTests extends ReceiveMessagesCommon
 
     @Test
     @ConditionalIgnoreRule.ConditionalIgnore(condition = StandardTierOnlyRule.class)
-    public void receiveBackToBackUniqueC2DCommandsOverAmqpsUsingSendAsync() throws Exception
+    public void receiveMultipleC2DMessages() throws Exception
     {
+        if (testInstance.protocol == HTTPS)
+        {
+            testInstance.client.setOption(SET_MINIMUM_POLLING_INTERVAL, ONE_SECOND_POLLING_INTERVAL);
+        }
+
         List messageIdListStoredOnC2DSend = new ArrayList(); // store the message id list on sending C2D commands using service client
         List messageIdListStoredOnReceive = new ArrayList(); // store the message id list on receiving C2D commands using device client
-
-        if (this.testInstance.protocol != AMQPS)
-        {
-            //only want to test for AMQPS
-            return;
-        }
 
         // This E2E test is for testing multiple C2D sends and make sure buffers are not getting overwritten
         List<CompletableFuture<Void>> futureList = new ArrayList<>();
@@ -128,29 +127,13 @@ public class ReceiveMessagesTests extends ReceiveMessagesCommon
             messageIdListStoredOnC2DSend.add(Integer.toString(i));
 
             // send the message. Service client uses AMQPS protocol
-            CompletableFuture<Void> future;
             if (testInstance.client instanceof DeviceClient)
             {
-                future = serviceClient.sendAsync(testInstance.identity.getDeviceId(), serviceMessage);
-                futureList.add(future);
+                serviceClient.send(testInstance.identity.getDeviceId(), serviceMessage);
             }
             else if (testInstance.client instanceof ModuleClient)
             {
                 serviceClient.send(testInstance.identity.getDeviceId(), ((Module) testInstance.identity).getId(), serviceMessage);
-            }
-        }
-
-        int futureTimeout = 3;
-
-        for (CompletableFuture<Void> future : futureList)
-        {
-            try
-            {
-                future.get(futureTimeout, TimeUnit.MINUTES);
-            }
-            catch (ExecutionException e)
-            {
-                Assert.fail(buildExceptionMessage("Exception : " + e.getMessage(), testInstance.client));
             }
         }
 

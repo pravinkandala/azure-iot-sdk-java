@@ -20,8 +20,7 @@ import java.util.concurrent.ConcurrentMap;
  */
 public class DeviceTestManager
 {
-    private static final int STOP_DEVICE_TIMEOUT_IN_MILLISECONDS = 10000;
-    private static final int SECOND_IN_MILLISECONDS = 1000;
+    private static final int CHECK_FOR_METHOD_PERIOD_MILLISECONDS = 100; //Check if the method was invoked every X milliseconds
 
     public InternalClient client;
 
@@ -46,7 +45,8 @@ public class DeviceTestManager
             {
                 throw new IOException("Connection timeout");
             }
-            Thread.sleep(SECOND_IN_MILLISECONDS);
+
+            Thread.sleep(CHECK_FOR_METHOD_PERIOD_MILLISECONDS);
         }
     }
 
