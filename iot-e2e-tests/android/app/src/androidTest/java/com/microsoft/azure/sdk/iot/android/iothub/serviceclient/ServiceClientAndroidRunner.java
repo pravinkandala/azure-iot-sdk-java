@@ -5,7 +5,7 @@
 package com.microsoft.azure.sdk.iot.android.iothub.serviceclient;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
-import com.microsoft.azure.sdk.iot.android.helper.TestGroup15;
+import com.microsoft.azure.sdk.iot.android.helper.TestGroup17;
 import com.microsoft.azure.sdk.iot.common.tests.iothub.serviceclient.ServiceClientTests;
 import com.microsoft.azure.sdk.iot.service.IotHubServiceClientProtocol;
 
@@ -15,7 +15,7 @@ import org.junit.runners.Parameterized;
 import java.io.IOException;
 import java.util.Collection;
 
-@TestGroup15
+@TestGroup17
 @RunWith(Parameterized.class)
 public class ServiceClientAndroidRunner extends ServiceClientTests
 {
