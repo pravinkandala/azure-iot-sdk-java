@@ -51,7 +51,7 @@ jobs:
     pool:
       vmImage: 'macOS-latest'
     strategy:
-      maxParallel: 21
+      maxParallel: 18
       matrix:
         TestGroup1:
           ANDROID_TEST_GROUP_ID: TestGroup1
@@ -75,12 +75,12 @@ jobs:
         #  ANDROID_TEST_GROUP_ID: TestGroup10
         TestGroup11:
           ANDROID_TEST_GROUP_ID: TestGroup11
-        TestGroup12:
-          ANDROID_TEST_GROUP_ID: TestGroup12
+        #TestGroup12:
+          #ANDROID_TEST_GROUP_ID: TestGroup12
         TestGroup13:
           ANDROID_TEST_GROUP_ID: TestGroup13
-        TestGroup14:
-          ANDROID_TEST_GROUP_ID: TestGroup14
+        #TestGroup14:
+          #ANDROID_TEST_GROUP_ID: TestGroup14
         TestGroup15:
           ANDROID_TEST_GROUP_ID: TestGroup15
         TestGroup16:
@@ -99,8 +99,8 @@ jobs:
           ANDROID_TEST_GROUP_ID: TestGroup22
         #TestGroup23:
           #ANDROID_TEST_GROUP_ID: TestGroup23
-        TestGroup24:
-          ANDROID_TEST_GROUP_ID: TestGroup24
+        #TestGroup24:
+          #ANDROID_TEST_GROUP_ID: TestGroup24
         #TestGroup25:
         #  ANDROID_TEST_GROUP_ID: TestGroup25
 

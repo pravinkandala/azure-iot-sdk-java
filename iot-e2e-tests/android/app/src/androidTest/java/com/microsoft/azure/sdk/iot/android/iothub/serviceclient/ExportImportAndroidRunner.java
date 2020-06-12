@@ -6,7 +6,7 @@
 package com.microsoft.azure.sdk.iot.android.iothub.serviceclient;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
-import com.microsoft.azure.sdk.iot.android.helper.TestGroup12;
+import com.microsoft.azure.sdk.iot.android.helper.TestGroup13;
 import com.microsoft.azure.sdk.iot.common.tests.iothub.serviceclient.ExportImportTests;
 import com.microsoft.azure.storage.StorageException;
 
@@ -18,7 +18,7 @@ import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
 
 @Ignore
-@TestGroup12
+@TestGroup13
 public class ExportImportAndroidRunner extends ExportImportTests
 {
     @BeforeClass

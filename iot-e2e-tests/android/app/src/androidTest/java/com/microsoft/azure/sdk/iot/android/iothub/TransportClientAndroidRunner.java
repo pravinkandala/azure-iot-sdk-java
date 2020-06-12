@@ -6,7 +6,7 @@
 package com.microsoft.azure.sdk.iot.android.iothub;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
-import com.microsoft.azure.sdk.iot.android.helper.TestGroup24;
+import com.microsoft.azure.sdk.iot.android.helper.TestGroup21;
 import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
 import com.microsoft.azure.sdk.iot.common.tests.iothub.TransportClientTests;
 import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collection;
 
-@TestGroup24
+@TestGroup21
 @RunWith(Parameterized.class)
 public class TransportClientAndroidRunner extends TransportClientTests
 {
