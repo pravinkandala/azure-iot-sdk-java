@@ -103,6 +103,8 @@
                 <executions>
                     <execution>
                         <goals>
+                            <!--This plugin will generate a jar file that contains all the test code so that the android
+                            test code can reference it.-->
                             <goal>test-jar</goal>
                         </goals>
                     </execution>
