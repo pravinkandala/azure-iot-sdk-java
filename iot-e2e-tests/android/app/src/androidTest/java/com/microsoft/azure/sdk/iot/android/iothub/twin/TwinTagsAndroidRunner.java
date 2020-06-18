@@ -6,10 +6,7 @@
 package com.microsoft.azure.sdk.iot.android.iothub.twin;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
-import com.microsoft.azure.sdk.iot.android.helper.TestGroup10;
-import tests.integration.com.microsoft.azure.sdk.iot.helpers.ClientType;
-import tests.integration.com.microsoft.azure.sdk.iot.helpers.Rerun;
-import tests.integration.com.microsoft.azure.sdk.iot.iothub.twin.TwinTagsTests;
+import com.microsoft.azure.sdk.iot.android.helper.TestGroup17;
 import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
 import com.microsoft.azure.sdk.iot.service.auth.AuthenticationType;
 
@@ -20,7 +17,11 @@ import org.junit.runners.Parameterized;
 import java.io.IOException;
 import java.util.Collection;
 
-@TestGroup10
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.ClientType;
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.Rerun;
+import tests.integration.com.microsoft.azure.sdk.iot.iothub.twin.TwinTagsTests;
+
+@TestGroup17
 @RunWith(Parameterized.class)
 public class TwinTagsAndroidRunner extends TwinTagsTests
 {
