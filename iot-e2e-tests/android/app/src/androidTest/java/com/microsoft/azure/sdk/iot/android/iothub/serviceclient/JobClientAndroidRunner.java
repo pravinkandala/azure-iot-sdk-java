@@ -7,7 +7,7 @@ package com.microsoft.azure.sdk.iot.android.iothub.serviceclient;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroup11;
-import com.microsoft.azure.sdk.iot.common.tests.iothub.serviceclient.JobClientTests;
+import tests.integration.com.microsoft.azure.sdk.iot.iothub.serviceclient.JobClientTests;
 import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
 
 import org.junit.BeforeClass;
@@ -25,6 +25,6 @@ public class JobClientAndroidRunner extends JobClientTests
     {
         iotHubConnectionString = BuildConfig.IotHubConnectionString;
         isPullRequest = Boolean.parseBoolean(BuildConfig.IsPullRequest);
-        JobClientTests.setUp();
+        JobClientTests.setUpCommon();
     }
 }

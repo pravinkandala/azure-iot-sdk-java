@@ -82,10 +82,12 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:multidex:1.0.3'
 
-    implementation ('com.microsoft.azure.sdk.iot:iot-e2e-common:0.26.0'){
-        exclude module: 'junit'
-        exclude module: 'azure-storage'
-    }
+    // This jar contains the test code that will be run on android. This jar isn't in the m2 folder, but rather it is in this cloned repo after mvn install is run
+    implementation files('../../common/target/iot-e2e-common-0.26.0-tests.jar')
+
+    // This jar contains the dependencies of the test code. DeviceClient, for instance. This jar isn't in the m2 folder, but rather it is in this cloned repo after mvn install is run
+    implementation files('../../common/target/iot-e2e-common-0.26.0-with-deps.jar')
+
     implementation ('com.microsoft.azure.android:azure-storage-android:2.0.0@aar')
     implementation ('org.apache.commons:commons-lang3:3.6')
 

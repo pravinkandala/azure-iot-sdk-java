@@ -7,4 +7,4 @@ if (($env:TARGET_BRANCH).toLower().Contains("system.pullrequest.targetbranch"))
     $isPullRequestBuild = "false";
 }
 
-mvn -DRUN_PROVISIONING_TESTS="$Env:runProvisioningTests" -DRUN_IOTHUB_TESTS="$Env:runIotHubTests" -DIS_PULL_REQUEST="$isPullRequestBuild" install -DskipITs=false -T 2C `-Dmaven.javadoc.skip
+mvn -DRUN_PROVISIONING_TESTS="$Env:runProvisioningTests" -DRUN_IOTHUB_TESTS="$Env:runIotHubTests" -DIS_PULL_REQUEST="$isPullRequestBuild" install -T 2C `-Dmaven.javadoc.skip

@@ -7,9 +7,9 @@ package com.microsoft.azure.sdk.iot.android.iothub.twin;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroup12;
-import com.microsoft.azure.sdk.iot.common.helpers.ClientType;
-import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
-import com.microsoft.azure.sdk.iot.common.tests.iothub.twin.DesiredPropertiesTests;
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.ClientType;
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.Rerun;
+import tests.integration.com.microsoft.azure.sdk.iot.iothub.twin.DesiredPropertiesTests;
 import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
 import com.microsoft.azure.sdk.iot.service.auth.AuthenticationType;
 
@@ -39,7 +39,7 @@ public class DesiredPropertiesAndroidRunner extends DesiredPropertiesTests
     {
         iotHubConnectionString = BuildConfig.IotHubConnectionString;
         isBasicTierHub = Boolean.parseBoolean(BuildConfig.IsBasicTierHub);
-
+        isPullRequest = Boolean.parseBoolean(BuildConfig.IsPullRequest);
         return inputsCommon();
     }
 }

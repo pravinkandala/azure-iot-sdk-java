@@ -7,9 +7,9 @@ package com.microsoft.azure.sdk.iot.android.iothub.errorinjection.messaging;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroup3;
-import com.microsoft.azure.sdk.iot.common.helpers.ClientType;
-import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
-import com.microsoft.azure.sdk.iot.common.tests.iothub.errorinjection.ReceiveMessagesErrInjTests;
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.ClientType;
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.Rerun;
+import tests.integration.com.microsoft.azure.sdk.iot.iothub.errorinjection.ReceiveMessagesErrInjTests;
 import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
 import com.microsoft.azure.sdk.iot.device.exceptions.ModuleClientException;
 import com.microsoft.azure.sdk.iot.service.auth.AuthenticationType;

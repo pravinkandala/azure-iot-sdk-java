@@ -6,7 +6,7 @@ package com.microsoft.azure.sdk.iot.android.iothub.serviceclient;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroup13;
-import com.microsoft.azure.sdk.iot.common.tests.iothub.serviceclient.ServiceClientTests;
+import tests.integration.com.microsoft.azure.sdk.iot.iothub.serviceclient.ServiceClientTests;
 import com.microsoft.azure.sdk.iot.service.IotHubServiceClientProtocol;
 
 import org.junit.runner.RunWith;
@@ -21,7 +21,7 @@ public class ServiceClientAndroidRunner extends ServiceClientTests
 {
     //This function is run before even the @BeforeClass annotation, so it is used as the @BeforeClass method
     @Parameterized.Parameters(name = "{0}")
-    public static Collection inputsCommon() throws IOException
+    public static Collection inputs() throws IOException
     {
         iotHubConnectionString = BuildConfig.IotHubConnectionString;
         isBasicTierHub = Boolean.parseBoolean(BuildConfig.IsBasicTierHub);

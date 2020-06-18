@@ -13,4 +13,4 @@ call RD /S /Q "c:/users/%USERNAME%/.m2/repository/com/microsoft/azure/sdk/iot"
 
 @REM -- E2E Test Build --
 cd %build-root%
-mvn -Dmaven.test.skip=true -Dmaven.javadoc.skip=true --projects :iot-e2e-common --also-make clean install
+mvn -Dmaven.test.skip=true -DskipTests=true --projects :iot-e2e-common --also-make clean install

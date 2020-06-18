@@ -7,9 +7,10 @@ package com.microsoft.azure.sdk.iot.android.provisioning;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroup2;
-import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
-import com.microsoft.azure.sdk.iot.common.setup.provisioning.ProvisioningCommon;
-import com.microsoft.azure.sdk.iot.common.tests.provisioning.ProvisioningTests;
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.Rerun;
+import tests.integration.com.microsoft.azure.sdk.iot.provisioning.ProvisioningTests;
+import tests.integration.com.microsoft.azure.sdk.iot.provisioning.setup.ProvisioningCommon;
+
 import com.microsoft.azure.sdk.iot.provisioning.device.ProvisioningDeviceClientTransportProtocol;
 
 import org.junit.Rule;

@@ -7,8 +7,8 @@ package com.microsoft.azure.sdk.iot.android.iothub;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroup16;
-import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
-import com.microsoft.azure.sdk.iot.common.tests.iothub.TransportClientTests;
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.Rerun;
+import tests.integration.com.microsoft.azure.sdk.iot.iothub.TransportClientTests;
 import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
 import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
 
@@ -38,6 +38,6 @@ public class TransportClientAndroidRunner extends TransportClientTests
         iotHubConnectionString = BuildConfig.IotHubConnectionString;
         isBasicTierHub = Boolean.parseBoolean(BuildConfig.IsBasicTierHub);
         isPullRequest = Boolean.parseBoolean(BuildConfig.IsPullRequest);
-        return TransportClientTests.inputs();
+        return TransportClientTests.inputsCommon();
     }
 }

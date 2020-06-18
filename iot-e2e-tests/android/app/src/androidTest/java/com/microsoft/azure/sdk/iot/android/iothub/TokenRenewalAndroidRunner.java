@@ -7,8 +7,8 @@ package com.microsoft.azure.sdk.iot.android.iothub;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroup17;
-import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
-import com.microsoft.azure.sdk.iot.common.tests.iothub.TokenRenewalTests;
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.Rerun;
+import tests.integration.com.microsoft.azure.sdk.iot.iothub.TokenRenewalTests;
 
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -27,6 +27,6 @@ public class TokenRenewalAndroidRunner extends TokenRenewalTests
         iotHubConnectionString = BuildConfig.IotHubConnectionString;
         isBasicTierHub = Boolean.parseBoolean(BuildConfig.IsBasicTierHub);
         isPullRequest = Boolean.parseBoolean(BuildConfig.IsPullRequest);
-        TokenRenewalTests.setup();
+        TokenRenewalTests.setupCommon();
     }
 }

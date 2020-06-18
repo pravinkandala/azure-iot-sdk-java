@@ -7,9 +7,6 @@ package com.microsoft.azure.sdk.iot.android.iothub.errorinjection.twin;
 
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroup7;
-import com.microsoft.azure.sdk.iot.common.helpers.ClientType;
-import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
-import com.microsoft.azure.sdk.iot.common.tests.iothub.errorinjection.GetTwinErrInjTests;
 import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
 import com.microsoft.azure.sdk.iot.service.auth.AuthenticationType;
 
@@ -20,6 +17,10 @@ import org.junit.runners.Parameterized;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collection;
+
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.ClientType;
+import tests.integration.com.microsoft.azure.sdk.iot.helpers.Rerun;
+import tests.integration.com.microsoft.azure.sdk.iot.iothub.errorinjection.GetTwinErrInjTests;
 
 @TestGroup7
 @RunWith(Parameterized.class)
